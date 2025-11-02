@@ -1,0 +1,66 @@
+<mxfile host="app.diagrams.net" modified="2025-11-02T00:00:00.000Z" agent="python" version="22.0.3">
+  <diagram id="airbnb-erd" name="AirBnB ERD">
+    <mxGraphModel dx="1280" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- User -->
+        <mxCell id="user" value="User&#10;— user_id (PK)&#10;first_name&#10;last_name&#10;email (UQ)&#10;password_hash&#10;phone_number&#10;role&#10;created_at" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;container=1;outlineConnect=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Property -->
+        <mxCell id="property" value="Property&#10;— property_id (PK)&#10;host_id (FK→User)&#10;name&#10;description&#10;location&#10;pricepernight&#10;created_at&#10;updated_at" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;container=1;outlineConnect=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="300" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- Booking -->
+        <mxCell id="booking" value="Booking&#10;— booking_id (PK)&#10;property_id (FK→Property)&#10;user_id (FK→User)&#10;start_date&#10;end_date&#10;total_price&#10;status&#10;created_at" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;container=1;outlineConnect=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="340" width="300" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- Payment -->
+        <mxCell id="payment" value="Payment&#10;— payment_id (PK)&#10;booking_id (FK→Booking)&#10;amount&#10;payment_date&#10;payment_method" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;container=1;outlineConnect=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="340" width="300" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Review -->
+        <mxCell id="review" value="Review&#10;— review_id (PK)&#10;property_id (FK→Property)&#10;user_id (FK→User)&#10;rating (1..5)&#10;comment&#10;created_at" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;container=1;outlineConnect=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="60" width="300" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Message -->
+        <mxCell id="message" value="Message&#10;— message_id (PK)&#10;sender_id (FK→User)&#10;recipient_id (FK→User)&#10;message_body&#10;sent_at" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;container=1;outlineConnect=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="340" width="300" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e_user_property" edge="1" parent="1" source="user" target="property" style="endArrow=block;endFill=1;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_property_booking" edge="1" parent="1" source="property" target="booking" style="endArrow=block;endFill=1;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_user_booking" edge="1" parent="1" source="user" target="booking" style="endArrow=block;endFill=1;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_booking_payment" edge="1" parent="1" source="booking" target="payment" style="endArrow=block;endFill=1;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_property_review" edge="1" parent="1" source="property" target="review" style="endArrow=block;endFill=1;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_user_review" edge="1" parent="1" source="user" target="review" style="endArrow=block;endFill=1;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_user_message_sender" edge="1" parent="1" source="user" target="message" style="endArrow=block;endFill=1;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_user_message_recipient" edge="1" parent="1" source="message" target="user" style="endArrow=block;endFill=1;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
